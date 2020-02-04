@@ -1,48 +1,65 @@
-import React, { Component } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import { TextInput, TouchableOpacity, StyleSheet, Text, View, Image } from 'react-native';
 
-export default class App extends Component {
+export default class App extends Component{
   constructor(props){
     super(props)
     this.state = {
-      comments: '',
-      likes: ''
+      name: '',
+      email: '',
+      title: 'Title',
+      newTitle: ''
     }
   }
+
+  
+  changeTitle = () => {  
+    const {newTitle} = this.state;
+    this.setState({
+      title : newTitle
+    });
+}
+
   componentDidMount(){
     this.setState({
-      comments: '10',
-      likes: '20'
+      name: 'gulsher',
+      email: 'gulsherkhan0005@gmail.com',
     })
   }
-
-  render(){
+  render() {
+    const {name, email, title, newTitle} = this.state;
   return (
     <View style={styles.container}>
+     
       <View style={styles.header}>
-        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25}}>Title</Text>
+  <Text>{title}</Text>
+        <Image source = {require('./img/logo1.png')} style={{width: 30, height: 30, position: 'absolute', top: 40, right: 10}}/>
+        <Image source = {require('./img/logo1.png')} style={{width: 30, height: 30,  position: 'absolute', top: 40, left: 10}}/>
+        </View>  
+      
+      <View>
+        <Image style={{height: 200,}} source = {require('./img/mainimage.jpeg')} />
+
+        <Image source = {require('./img/logo4.jpg')} style={{width: 30, height: 30,  position: 'absolute', top: 10, left: 10}}/>
+        <Image source = {require('./img/logo4.jpg')} style={{width: 30, height: 30,  position: 'absolute', bottom: 10, left: 10}}/>
+        <Image source = {require('./img/logo4.jpg')} style={{width: 30, height: 30,  position: 'absolute', top: 10, right: 10}}/>
+        <Image source = {require('./img/logo4.jpg')} style={{width: 30, height: 30,  position: 'absolute', bottom: 10, right: 10}}/>
+
       </View>
 
-          <View>
-           <Image source={require('./img/bunny.png')} style={{width: 600, height: 300}} />
-           <Image source={require('./img/logo1.jpg')} style={{width: 60, height: 60, borderRadius: 50, position: 'absolute', top:10, right: 10}} />
-           </View>
+      <View style={{paddingTop: 20, paddingHorizontal: 16}}>
 
-          <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, paddingHorizontal: 10}}>
+        <Text>Name - {name} </Text>
+        <Text>Email - {email} </Text>
+      </View>
 
-            <View style={{flexDirection: 'row', justifyContent: 'space-between',}}>
-            <Text style={{paddingRight: 20}}>Comments: {this.state.comments} </Text>
-            <Text>Likes: {this.state.likes}</Text>
-            </View>
+      <View style={{alignItems: 'center', paddingTop: 150 }}>
+        <TextInput onChangeText = {fetch => this.setState({newTitle: fetch})}  placeholder="change title" style={{borderBottomWidth: 2, width: 100}} maxLength = {10} />
+      </View>
 
-              
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between',}}>
-            <Image source={require('./img/logo1.jpg')} style={{width: 30, height: 30, borderRadius: 50,}} />
-            <Image source={require('./img/logo1.jpg')} style={{width: 30, height: 30, borderRadius: 50,}} />
-            <Image source={require('./img/logo1.jpg')} style={{width: 30, height: 30, borderRadius: 50,}} />
-            </View>
-
-          </View>
+      <TouchableOpacity onPress = {this.changeTitle} style={styles.bottomButton}>
+      <Image  source = {require('./img/logo4.jpg')} style={{width: 30, height: 30, borderRadius: 50, alignSelf: 'center', marginTop: 25}}/>
+      </TouchableOpacity>
 
     </View>
   );
@@ -52,15 +69,23 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F0EBD3',
+    backgroundColor: 'yellow',
   },
 
   header: {
-    backgroundColor: '#90F1E9',
-    height: 100,
+    backgroundColor: 'pink',
+    height: 56,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
+  bottomButton: {
+        backgroundColor: 'red',
+        width: 80,
+        height: 80,
+        borderRadius: 50,
+        alignSelf: 'center',
+        margin: 80,
+  }
 
 });

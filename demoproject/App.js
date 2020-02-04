@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
-import forgot from './forgot';
 
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
-
-import { StyleSheet, Text, Button, View, Image, TextInput, TouchableOpacity, Linking, navigate} from 'react-native';
+import { StyleSheet, Text, Button, View, Image, TextInput, TouchableOpacity, Linking,} from 'react-native';
 
 export default class App extends Component  {
   render(){ 
@@ -34,14 +30,14 @@ export default class App extends Component  {
             <Text style={{color: 'white', fontWeight: 'bold'}}>Log In</Text>
         </TouchableOpacity>  
         </View>
-      <Text style={{paddingTop: 10, paddingBottom: 10, color: '#385898'}} onPress= {()=> this.props.navigate('./forgot.js')} >Forget your password?</Text>
+      <Text style={{paddingTop: 10, paddingBottom: 10, color: '#385898'}} onPress={ ()=> Linking.openURL('https://www.facebook.com/login/identify/?ctx=recover&ars=royal_blue_bar')} >Forget your password?</Text>
       </View>
       <View style={{
             borderBottomColor: 'gray',
             borderBottomWidth: 0.5,
             }}
       />
-      <Text style={{color: 'gray', alignSelf: 'center', paddingTop: 25 }} > ────────────────  or  ────────────────</Text>
+      <Text style={{color: 'gray', alignSelf: 'center', paddingTop: 25 }} > <Text style={{borderBottomWidth: 2}}></Text>  or  <Text style={{borderBottomWidth: 2}}></Text></Text>
 
       <View style={{justifyContent: 'center', alignItems: 'center'}}>  
       <TouchableOpacity style={{backgroundColor: '#669b46', width: 150, height: 40, alignItems: 'center', justifyContent: 'center', marginTop: 20}} >
@@ -78,4 +74,3 @@ const styles = StyleSheet.create({
    }
 
 })
-

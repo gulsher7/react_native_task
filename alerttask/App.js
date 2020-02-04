@@ -1,41 +1,49 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from "react-native";
+import { Platform, StyleSheet, Text, View, TextInput, TouchableOpacity} from "react-native";
 
 export default class HomeActivity extends Component {
 
   constructor(props) {
       super(props)
       this.state = {
-        TextInputValue: ''
+        textInputValue: '',
+        email:'gulsher'
       }
   }
 
   getValue = () =>{
-      const { TextInputValue }  = this.state ;
-      Alert.alert(TextInputValue);
+      const { textInputValue,email }  = this.state ;
+      alert(textInputValue);
+       
   }
 
 
   render() {
+    // const { textInputValue,email }  = this.state ;
     return (
       <View style={styles.container}>
         <Text style={styles.headerText}>
          Name
         </Text>
-
+        
+        
         <TextInput
           style={{width: 200, borderBottomColor: "gray",borderBottomWidth: 2}}
-          onChangeText={TextInputValue => this.setState({TextInputValue})}
+          onChangeText={value => this.setState({textInputValue:value})}
          
         />
 
         <View style={styles.button}>
 
           <TouchableOpacity onPress={this.getValue} >
-            <Text style={{color: 'white'}}>SHOW</Text>
+            <Text style={{color: 'white', backgroundColor: 'red'}}>SHOW</Text>
             </TouchableOpacity>
 
         </View>
+
+        {/* <View>
+    <Text>{textInputValue}</Text>
+        </View> */}
       </View>
     );
   }
@@ -52,6 +60,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     fontWeight: "bold"
   },
+  
   button: {
     borderRadius: 40,
     width: 200,
